@@ -9,4 +9,6 @@ Steps to run the website
 
 3.Import the project to your workspace
 
+4.Make sure you are connected to the internet
+
 4.Now you are good to go.... run the website!

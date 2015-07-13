@@ -86,7 +86,7 @@ public partial class _Default : System.Web.UI.Page
         }
         catch (Exception k)
         {
-            Response.Write("<script>alert('error in url :make sure you entered the correct url to the image!')</script>");
+            Response.Write("<script>alert('error: "+ Server.HtmlEncode(k.Message) + "')</script>");
         }
        
        
@@ -112,8 +112,18 @@ public partial class _Default : System.Web.UI.Page
             //converting byte array to bits
             BitArray bit_string2 = new BitArray(byt_string2);
 
-            bit_string1.Xor(bit_string2);
-            
+            //checking for equal size of bit array
+            if (bit_string1.Length == bit_string2.Length)
+            {
+                bit_string1.Xor(bit_string2);
+            }
+
+            else
+            {
+                bit_string2.Length = bit_string1.Length;
+                bit_string1.Xor(bit_string2);
+            }
+
        
         for (int i = 0; i < bit_string1.Length; i++)
         {
